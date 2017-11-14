@@ -1,6 +1,6 @@
 LD=g++
 CXX=g++ -g -c
-NAME=save-green-channel
+NAME=cathodic-screen
 EXEC_SRC=\
         ${NAME}.cpp
 MODULE_SRC=

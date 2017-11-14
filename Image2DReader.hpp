@@ -10,6 +10,8 @@
 #include <string>
 #include "Color.hpp"
 #include "Image2D.hpp"
+#include <ctype.h>
+#include <cstdlib>
 template <typename TValue>
 class Image2DReader {
 public:
@@ -88,12 +90,15 @@ public:
         std::string type;
         std::getline(input,str);
         type = str;
-        //std::getline(input,str);
+        //On saute 2 lignes
         std::getline(input,str);
+        if(isdigit(atoi( str.c_str() )))//Si ce n'est pas un commentaire
+            std::getline(input,str);
 
         int w,h;
         std::istringstream istr( str );
         istr >> w >> h;
+        std::getline(input,str); // pour éviter le bug de la colonne
 
         img.w(w);
         img.h(h);
@@ -107,9 +112,9 @@ public:
         int size = w*h;
         for ( Iterator it = img.begin(), itE = img.end(); it != itE; ++it ) {
             Byte red,blue,green;
-            input >> blue;
             input >> red;
             input >> green;
+            input >> blue;
             cpt++;
             *it = Color(red,green,blue);
         }
