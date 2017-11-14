@@ -45,9 +45,6 @@ int main( int argc, char** argv ) {
         ++itRed; ++itGreen; ++itBlue;
         x = ( x+1 ) % img.w();
     }
-    /***
-     * TODO
-     */
     std::ofstream output2(argv[2]);
     bool ok2 = ColorImage2DWriter::write( img, output2, false );
     if ( !ok2 )
