@@ -92,9 +92,10 @@ public:
         type = str;
         //On saute 2 lignes
         std::getline(input,str);
-        if(isdigit(atoi( str.c_str() )))//Si ce n'est pas un commentaire
-            std::getline(input,str);
-
+        //std::getline(input,str);
+        /*if(isdigit(atoi( str.c_str() )))//Si ce n'est pas un commentaire
+            std::getline(input,str); TODO fix ce bordel
+        */
         int w,h;
         std::istringstream istr( str );
         istr >> w >> h;

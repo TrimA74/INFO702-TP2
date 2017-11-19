@@ -75,11 +75,11 @@ public:
 
     template <typename Accessor>
     GenericConstIterator< Accessor > const end( int x = 0, int y = 0 ) const
-    { return start( w(), h() ); }
+    { return start<Accessor> ( w(), h() ); }
 
     template <typename Accessor>
     GenericConstIterator< Accessor > const begin( int x = 0, int y = 0 ) const
-    { return GenericConstIterator< Accessor >( *this, 0, 0 ); }
+    { return start<Accessor>(0,0); }
 
 
     template <typename TAccessor>
@@ -107,7 +107,7 @@ public:
 
     template <typename Accessor>
     GenericIterator< Accessor > end( int x = 0, int y = 0 )
-    { return start( w(), h() ); }
+    { return start<Accessor>( w(), h() ); }
 
     template <typename Accessor>
     GenericIterator< Accessor > begin( int x = 0, int y = 0 )

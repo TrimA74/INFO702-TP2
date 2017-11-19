@@ -116,4 +116,47 @@ struct ColorRedAccessor {
     { return ColorRedReference( arg ); }
 };
 
+struct ColorValueAccessor {
+    typedef unsigned char Value;
+    typedef Color Argument;
+    struct ColorValueReference {
+        Argument & arg;
+        ColorValueReference( Argument & someArg ) : arg( someArg ) {}
+        // Cette fonction sera appelée lors d'un `*it = ...`.
+        // S'occupe de changer la valeur de la couleur arg
+        // en fonction de la valeur donnée val.
+        // Il faut utiliser arg.getHSV et arg.setHSV.
+        ColorValueReference& operator=( Value val )
+        {
+            float s,v;
+            int h;
+            arg.getHSV(h,s,v);
+            arg.setHSV(h,s,v);
+        }
+        // S'occupe de retourner la valeur de la couleur arg (sans la changer).
+        // Un simple appel à arg.getHSV suffira.
+        operator Value() const
+        {
+            float s,v;
+            int h;
+            arg.getHSV(h,s,v);
+            return v * 255;
+        }
+    };
+    typedef ColorValueReference Reference;
+    // Il s'agit d'un simple accès en lecture à la valeur de la couleur arg.
+    // Un simple appel à arg.getHSV suffira.
+    static Value access( const Argument & arg )
+    {
+        float s,v;
+        int h;
+        arg.getHSV(h,s,v);
+        return v * 255;
+    }
+    // Il suffit de créer et retourner un objet de type ColorValueReference référençant arg.
+    static Reference access( Argument & arg )
+    { return ColorValueReference( arg ); }
+};
+
+
 #endif //TP2_ACCESSOR_HPP

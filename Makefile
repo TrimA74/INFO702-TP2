@@ -1,6 +1,6 @@
 LD=g++
 CXX=g++ -g -c
-NAME=cathodic-screen
+NAME=generate-histogramme
 EXEC_SRC=\
         ${NAME}.cpp
 MODULE_SRC=

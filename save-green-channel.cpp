@@ -39,7 +39,8 @@ int main( int argc, char** argv )
     // Servira à parcourir la composante verte de l'image couleur.
     typedef ColorImage2D::GenericConstIterator< ColorGreenAccessor > ColorGreenConstIterator;
     // Notez comment on appelle la méthode \b générique `begin` de `Image2D`.
-    ColorGreenConstIterator itGreen = img.begin< ColorGreenAccessor >();
+    const ColorImage2D& cimg = img ;
+    ColorGreenConstIterator itGreen = cimg.begin< ColorGreenAccessor >();
     // On écrit la composante verte dans l'image en niveaux de gris.
     for ( GrayLevelIterator it = img2.begin(), itE = img2.end();
           it != itE; ++it )
