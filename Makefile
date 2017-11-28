@@ -1,6 +1,6 @@
 LD=g++
 CXX=g++ -g -c
-NAME=generate-histogramme
+NAME=egaliseur-couleur
 EXEC_SRC=\
         ${NAME}.cpp
 MODULE_SRC=

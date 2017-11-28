@@ -75,41 +75,48 @@ struct Color {
     */
     void setHSV( int h, float s, float v )
     {
+
+        if( 255 < v){
+            std::cout << "problem youston" << std::endl;
+        }
         int ti =(h/60) % 6;
         int f = (h/60) - ti;
         float l = v* (1-s);
         float m = v * ( 1 - f* s);
         float n = v * (1 - (1 - f) * s);
+        v *= 255.0;
+        n *= 255.0;
+        l *= 255.0;
         switch(ti){
             case 0:
-                red = (Byte) v*255;
-                green = (Byte) n*255;
-                blue = (Byte) l*255;
+                red = (Byte) v;
+                green = (Byte) n;
+                blue = (Byte) l;
                 break;
             case 1:
-                red = (Byte) m*255;
-                green = (Byte) v*255;
-                blue = (Byte) l*255;
+                red = (Byte) m;
+                green = (Byte) v;
+                blue = (Byte) l;
                 break;
             case 2:
-                red = (Byte) l*255;
-                green = (Byte) v*255;
-                blue = (Byte) n*255;
+                red = (Byte) l;
+                green = (Byte) v;
+                blue = (Byte) n;
                 break;
             case 3:
-                red = (Byte) l*255;
-                green = (Byte) m*255;
-                blue = (Byte) v*255;
+                red = (Byte) l;
+                green = (Byte) m;
+                blue = (Byte) v;
                 break;
             case 4:
-                red = (Byte) n*255;
-                green = (Byte) l*255;
-                blue = (Byte) v*255;
+                red = (Byte) n;
+                green = (Byte) l;
+                blue = (Byte) v;
                 break;
             case 5:
-                red = (Byte) v*255;
-                green = (Byte) l*255;
-                blue = (Byte) m*255;
+                red = (Byte) v;
+                green = (Byte) l;
+                blue = (Byte) m;
                 break;
         }
     }
