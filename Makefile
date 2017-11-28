@@ -1,6 +1,6 @@
 LD=g++
 CXX=g++ -g -c
-NAME=egaliseur-graylevel
+NAME=sepia
 EXEC_SRC=\
         ${NAME}.cpp
 MODULE_SRC=

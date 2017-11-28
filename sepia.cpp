@@ -13,8 +13,9 @@
 
 int main(int argc, char** argv )
 {
+    typedef unsigned char Byte;
     typedef Image2D<Color> ColorImage2D;
-    typedef Image2D<unsigned char> GrayLevelImage2D;
+    typedef Image2D<Byte> GrayLevelImage2D;
     typedef ColorImage2D::Iterator Iterator;
     typedef ColorImage2D::ConstIterator ConstIterator;
     typedef GrayLevelImage2D::Iterator GrayLevelIterator;
@@ -36,9 +37,9 @@ int main(int argc, char** argv )
     input.close();
     //std::cout << "import sucessed" << std::endl;
 
-    for ( Iterator it = img.begin(), itE = img.end(); it != itE; ++it ) // (*)
+    for ( ColorImage2D::GenericIterator<ColorValueAccessor> it = img.begin< ColorValueAccessor >(), itE = img.end< ColorValueAccessor >(); it != itE; ++it )
     {
-        Color c = *it;
+        Color c = (*it).arg;
         //int average = (c.red + c.green + c.blue)/3;
         double red = (c.red * .393) + (c.green *.769) + (c.blue * .189);
         red = std::min(255.0,red);
@@ -51,7 +52,7 @@ int main(int argc, char** argv )
         double blue = (c.red * .272) + (c.green *.534) + (c.blue * .131);
         blue = std::min(255.0,blue);
         blue = std::max(0.0,blue);
-        *it = Color((unsigned char)red,(unsigned char)green,(unsigned char)blue);
+        (*it).arg = Color((Byte)red,(Byte)green,(Byte)blue);
     }
 
     std::ofstream output( argv[2]);
