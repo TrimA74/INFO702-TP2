@@ -43,14 +43,14 @@ public:
     /// @return un itérateur pointant sur le début de l'image
     Iterator begin() { return start( 0, 0 ); }
     /// @return un itérateur pointant après la fin de l'image
-    Iterator end()   { return start(w(), h() ); }
+    Iterator end()   { return start(0, h() ); }
     /// @return un itérateur pointant sur le pixel (x,y).
     Iterator start( int x, int y ) { return Iterator( *this, x, y ); }
 
     /// @return un itérateur pointant sur le début de l'image
     ConstIterator begin() const { return start( 0, 0 ); }
     /// @return un itérateur pointant après la fin de l'image
-    ConstIterator end()  const { return start( w(), h() ); }
+    ConstIterator end()  const { return start( 0, h() ); }
     /// @return un itérateur pointant sur le pixel (x,y).
     ConstIterator start( int x, int y ) const { return ConstIterator(*this, x, y ); }
 
