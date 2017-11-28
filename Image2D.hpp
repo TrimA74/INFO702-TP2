@@ -40,6 +40,11 @@ public:
                 : Container::const_iterator( image.m_data.begin() + image.index( x, y ) )
         {}
     };
+
+    /***
+     * Question 4
+     */
+
     /// @return un itérateur pointant sur le début de l'image
     Iterator begin() { return start( 0, 0 ); }
     /// @return un itérateur pointant après la fin de l'image

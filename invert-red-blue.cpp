@@ -14,15 +14,13 @@ int main(int argc, char** argv )
     typedef ColorImage2D::Iterator Iterator;
     typedef ColorImage2D::ConstIterator ConstIterator;
     typedef unsigned char Byte;
-/*
     if ( argc < 3 )
     {
-        std::cerr << "Usage: testColor <input.pgm> <output.pgm>" << std::endl;
+        std::cerr << "Usage: invert-red-blue <input.pgm> <output.pgm>" << std::endl;
         return 0;
-    }*/
+    }
     ColorImage2D img;
-    //std::ifstream input( argv[1] ); // récupère le 1er argument.
-    std::ifstream input( "kowloon.ppm" ); // récupère le 1er argument.
+    std::ifstream input( argv[1] ); // récupère le 1er argument.
     bool ok = Image2DReader<Color>::read( img, input );
     if ( !ok )
     {
@@ -38,8 +36,7 @@ int main(int argc, char** argv )
         (*it).blue = red;
     }
 
-    //std::ofstream output( argv[2] );
-    std::ofstream output( "kowloon-inv.ppm" );
+    std::ofstream output( argv[2] );
     bool ok2 = Image2DWriter<Color>::write( img, output, false );
     if ( !ok2 ) {
         std::cerr << "Error writing output file." << std::endl;

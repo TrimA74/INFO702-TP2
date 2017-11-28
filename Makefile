@@ -1,6 +1,6 @@
 LD=g++
 CXX=g++ -g -c
-NAME=sepia
+NAME=save-channels
 EXEC_SRC=\
         ${NAME}.cpp
 MODULE_SRC=

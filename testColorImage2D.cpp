@@ -14,7 +14,9 @@ int main(int argc, char** argv )
     typedef Image2D<Color> ColorImage2D;
     typedef ColorImage2D::Iterator Iterator;
     typedef ColorImage2D::ConstIterator ConstIterator;
-    /*
+    /***
+     * Question 3
+     *
     ColorImage2D img( 256, 256, Color( 0, 0, 0 ) );
     Iterator it = img.begin();
 
