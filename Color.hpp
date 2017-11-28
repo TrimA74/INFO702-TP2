@@ -76,15 +76,16 @@ struct Color {
     void setHSV( int h, float s, float v )
     {
 
-        if( 255 < v){
+        if( 1.0 < v){
             std::cout << "problem youston" << std::endl;
         }
         int ti =(h/60) % 6;
-        int f = (h/60) - ti;
-        float l = v* (1-s);
-        float m = v * ( 1 - f* s);
+        float f = (h/60.0f) - ti;
+        float l = v * ( 1 - s);
+        float m = v * ( 1 - f * s);
         float n = v * (1 - (1 - f) * s);
         v *= 255.0;
+        m *= 255.0;
         n *= 255.0;
         l *= 255.0;
         switch(ti){
@@ -117,6 +118,9 @@ struct Color {
                 red = (Byte) v;
                 green = (Byte) l;
                 blue = (Byte) m;
+                break;
+            default :
+                std::cout << "problem youston" << std::endl;
                 break;
         }
     }

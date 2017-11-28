@@ -40,7 +40,7 @@ int main(int argc, char** argv )
     input.close();
     std::cout << "import sucessed" << std::endl;
 
-    std::ofstream output( "colors2.ppm" );
+    std::ofstream output( argv[2] );
     bool ok2 = Image2DWriter<Color>::write( img, output, false );
     if ( !ok2 ) {
         std::cerr << "Error writing output file." << std::endl;
