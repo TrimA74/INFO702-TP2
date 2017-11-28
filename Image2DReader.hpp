@@ -41,11 +41,18 @@ public:
         std::getline(input,str);
         type = str;
         std::getline(input,str);
-        std::getline(input,str);
+        /***
+        * Tant qu'on a des commentaires
+        */
+        while(str.c_str()[0] == '#'){
+            std::getline(input,str);
+        }
 
         int w,h;
         std::istringstream istr( str );
         istr >> w >> h;
+
+        std::getline(input,str); // pour éviter le bug de la colonne
 
         img.w(w);
         img.h(h);
@@ -92,10 +99,13 @@ public:
         type = str;
         //On saute 2 lignes
         std::getline(input,str);
-        //std::getline(input,str);
-        /*if(isdigit(atoi( str.c_str() )))//Si ce n'est pas un commentaire
-            std::getline(input,str); TODO fix ce bordel
-        */
+        /***
+         * Tant qu'on a des commentaires
+         */
+        while(str.c_str()[0] == '#'){
+            std::getline(input,str);
+        }
+
         int w,h;
         std::istringstream istr( str );
         istr >> w >> h;

@@ -1,6 +1,6 @@
 LD=g++
 CXX=g++ -g -c
-NAME=testColorImage2D
+NAME=egaliseur-graylevel
 EXEC_SRC=\
         ${NAME}.cpp
 MODULE_SRC=
